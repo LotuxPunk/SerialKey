@@ -1,4 +1,4 @@
-﻿package fr.skyost.serialkey.utils;
+package fr.skyost.serialkey.utils;
 
 import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.YamlConfiguration;

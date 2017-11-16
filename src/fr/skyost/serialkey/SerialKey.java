@@ -10,7 +10,6 @@ import java.util.Map.Entry;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;
-import org.bukkit.NamespacedKey;
 import org.bukkit.command.PluginCommand;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.ShapedRecipe;
@@ -141,7 +140,7 @@ public class SerialKey extends JavaPlugin {
 	 */
 	
 	private final void createRecipe(final ItemStack result, final List<String> shape, Map<String, String> ingredients) {
-		final ShapedRecipe recipe = new ShapedRecipe(new NamespacedKey(this, this.getDescription().getName()),result);
+		final ShapedRecipe recipe = new ShapedRecipe(result);
 		recipe.shape(shape.toArray(new String[shape.size()]));
 		if(ingredients.equals(config.shapeMaterials)) {
 			ingredients = Utils.keepAll(ingredients, shape);
