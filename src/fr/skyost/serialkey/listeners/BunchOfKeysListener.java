@@ -45,7 +45,7 @@ public class BunchOfKeysListener implements Listener {
 		if(!SerialKeyAPI.isBunchOfKeys(inventory)) {
 			return;
 		}
-		final ItemStack bunchOfKeys = event.getPlayer().getItemInHand();
+		final ItemStack bunchOfKeys = event.getPlayer().getInventory().getItemInMainHand();
 		SerialKeyAPI.clearKeys(bunchOfKeys);
 		for(final ItemStack item : inventory.all(SerialKeyAPI.getConfig().keyMaterial).values()) {
 			SerialKeyAPI.addKey(bunchOfKeys, item);

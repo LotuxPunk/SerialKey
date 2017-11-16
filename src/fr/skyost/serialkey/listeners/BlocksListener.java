@@ -45,14 +45,14 @@ public class BlocksListener implements Listener {
 			return;
 		}
 		final Player player = event.getPlayer();
-		final ItemStack inHand = player.getItemInHand();
+		final ItemStack inHand = player.getInventory().getItemInMainHand();
 		if(SerialKeyAPI.isValidKey(inHand, location)) {
 			if(!SerialKeyAPI.isMasterKey(inHand)) {
 				if(SerialKeyAPI.getConfig().reusableKeys) {
 					int amount = 0;
 					if(SerialKeyAPI.isUsedKey(inHand)) {
 						amount = inHand.getAmount();
-						player.setItemInHand(new ItemStack(Material.AIR));
+						player.getInventory().setItemInMainHand(new ItemStack(Material.AIR));
 					}
 					else if(SerialKeyAPI.isBunchOfKeys(inHand)) {
 						amount = SerialKeyAPI.removeKey(inHand, SerialKeyAPI.getKey(location));
@@ -69,7 +69,7 @@ public class BlocksListener implements Listener {
 						SerialKeyAPI.removeKey(inHand, SerialKeyAPI.getKey(location));
 					}
 					else {
-						player.setItemInHand(new ItemStack(Material.AIR));
+						player.getInventory().setItemInMainHand(new ItemStack(Material.AIR));
 					}
 					player.playSound(player.getLocation(), Sound.ENTITY_ITEM_BREAK, 1f, 1f);
 				}
